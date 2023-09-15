@@ -1,44 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import io from 'socket.io-client';
+import IdlePage from "./pages/Idle.jsx";
+import ShowPin from "./pages/ShowPin.jsx";
+import StockList from "./pages/StockList.jsx";
+import Success from "./pages/Success.jsx";
 
 const socket = io('http://localhost:4000');
 
 function App() {
-  const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const [currentPage, setCurrentPage] = useState(null);
 
   useEffect(() => {
     socket.on('message', (newMessage) => {
-      setMessages([...messages, newMessage]);
+      const parsedMessage = JSON.parse(newMessage);
+      setMessages([...messages, parsedMessage.text]);
+
+      switch (parsedMessage.page) {
+        case 'idle':
+          setCurrentPage(<IdlePage />);
+          break;
+        case 'show-pin':
+          setCurrentPage(<ShowPin />);
+          break;
+        case 'stock-list':
+          setCurrentPage(<StockList />);
+          break;
+        case 'success':
+          setCurrentPage(<Success />);
+          break;
+        default:
+          setCurrentPage(null);
+          break;
+      }
     });
   }, [messages]);
 
-  const sendMessage = () => {
-    socket.emit('message', message);
-    setMessage('');
-  };
-
   return (
     <div className="App">
-      <h1>Real-Time Chat App</h1>
-      <div className="chat-container">
-        <div className="messages">
-          {messages.map((msg, index) => (
-            <div key={index} className="message">
-              {msg}
-            </div>
-          ))}
-        </div>
-        <div className="input-container">
-          <input
-            type="text"
-            placeholder="Enter your message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          <button onClick={sendMessage}>Send</button>
-        </div>
+      <div className="page-container">
+        {currentPage}
       </div>
     </div>
   );
