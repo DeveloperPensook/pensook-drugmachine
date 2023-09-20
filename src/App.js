@@ -7,14 +7,25 @@ import StockList from "./pages/StockList.jsx";
 import Success from "./pages/Success.jsx";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(null);
+  const [currentPage, setCurrentPage] = useState(<IdlePage />);
   const [socketData, setSocketData] = useState({ page: null });
+  const [userIpAddress, setUserIpAddress] = useState('');
 
   useEffect(() => {
-    const socket = io('http://localhost:4000');
+    fetch('https://api64.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => setUserIpAddress(data.ip))
+      .catch(error => console.error('Error fetching IP address:', error));
+
+    const socket = io(
+      process.env.IS_PROD === '1'
+        ? process.env.REACT_APP_BACKEND_URL_PROD
+        : process.env.REACT_APP_BACKEND_URL
+    );
 
     socket.on("message", (data) => {
       setSocketData(JSON.parse(data));
+      console.log(JSON.parse(data))
     });
 
     return () => {
@@ -23,22 +34,23 @@ function App() {
   }, []);
 
   useEffect(() => {
-    switch (socketData.page) {
-      case 'idle':
-        setCurrentPage(<IdlePage />);
-        break;
-      case 'show-pin':
-        setCurrentPage(<ShowPin />);
-        break;
-      case 'stock-list':
-        setCurrentPage(<StockList />);
-        break;
-      case 'success':
-        setCurrentPage(<Success />);
-        break;
-      default:
-        setCurrentPage(null);
-        break;
+    if (userIpAddress == socketData.ipAddress) {
+      switch (socketData.page) {
+        case 'show-pin':
+          setCurrentPage(<ShowPin socketMessage={socketData.message} />);
+          break;
+        case 'stock-list':
+          setCurrentPage(<StockList socketMessage={socketData.message} />);
+          break;
+        case 'success':
+          setCurrentPage(<Success socketMessage={socketData.message} />);
+          break;
+        default:
+          setCurrentPage(null);
+          break;
+      }
+    } else {
+      setCurrentPage(<IdlePage />);
     }
   }, [socketData]);
 
