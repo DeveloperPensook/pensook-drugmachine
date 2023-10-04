@@ -5,18 +5,14 @@ import IdlePage from "./pages/Idle.jsx";
 import ShowPin from "./pages/ShowPin.jsx";
 import StockList from "./pages/StockList.jsx";
 import Success from "./pages/Success.jsx";
+import Login from "./pages/Login.jsx";
+import Cookies from 'js-cookie';
 
 function App() {
   const [currentPage, setCurrentPage] = useState(<IdlePage />);
   const [socketData, setSocketData] = useState({ page: null });
-  const [userIpAddress, setUserIpAddress] = useState('');
 
   useEffect(() => {
-    fetch('https://api64.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => setUserIpAddress(data.ip))
-      .catch(error => console.error('Error fetching IP address:', error));
-
     const socket = io(
       process.env.IS_PROD === '1'
         ? process.env.REACT_APP_BACKEND_URL_PROD
@@ -34,23 +30,32 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (userIpAddress == socketData.ipAddress) {
-      switch (socketData.page) {
-        case 'show-pin':
-          setCurrentPage(<ShowPin socketMessage={socketData.message} />);
-          break;
-        case 'stock-list':
-          setCurrentPage(<StockList socketMessage={socketData.message} />);
-          break;
-        case 'success':
-          setCurrentPage(<Success socketMessage={socketData.message} />);
-          break;
-        default:
-          setCurrentPage(null);
-          break;
+    const sessionValue = Cookies.get('session');
+    if (sessionValue) {
+      const decodedString = decodeURIComponent(sessionValue);
+      const cookieSession = JSON.parse(decodedString);
+      if (cookieSession.Code && socketData.drugMachineCode) {
+        if (cookieSession.Code == socketData.drugMachineCode) {
+          switch (socketData.page) {
+            case 'show-pin':
+              setCurrentPage(<ShowPin socketMessage={socketData.message} />);
+              break;
+            case 'stock-list':
+              setCurrentPage(<StockList socketMessage={socketData.message} />);
+              break;
+            case 'success':
+              setCurrentPage(<Success socketMessage={socketData.message} />);
+              break;
+            default:
+              setCurrentPage(null);
+              break;
+          }
+        }
+      } else {
+        setCurrentPage(<IdlePage/>)
       }
     } else {
-      setCurrentPage(<IdlePage />);
+      setCurrentPage(<Login/>)
     }
   }, [socketData]);
 
