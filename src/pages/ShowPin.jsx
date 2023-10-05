@@ -22,7 +22,7 @@ function ShowPin({ socketMessage }) {
 
   const callService = () => {
     const requestBody = { pin: socketMessage.pin };
-    const BACKEND_URL = process.env.IS_PROD  == 'true'
+    const BACKEND_URL = process.env.REACT_APP_IS_PROD  == 'true'
       ? process.env.REACT_APP_BACKEND_URL_PROD
       : process.env.REACT_APP_BACKEND_URL
 

@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     const socket = io(
-      process.env.IS_PROD  == 'true'
+      process.env.REACT_APP_IS_PROD  == 'true'
         ? process.env.REACT_APP_BACKEND_URL_PROD
         : process.env.REACT_APP_BACKEND_URL
     );
