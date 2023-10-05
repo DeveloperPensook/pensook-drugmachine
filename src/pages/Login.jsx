@@ -15,7 +15,7 @@ function Login() {
   };
 
   const handleLogin = () => {
-    const backendURL = process.env.IS_PROD == 'true'
+    const backendURL = process.env.REACT_APP_IS_PROD == 'true'
       ? process.env.REACT_APP_BACKEND_URL_PROD
       : process.env.REACT_APP_BACKEND_URL;
 
