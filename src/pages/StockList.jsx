@@ -10,7 +10,7 @@ function StockList({ socketMessage }) {
         ? { stockLedgerEntryId: socketMessage.stockLedgerEntryId }
         : { drugMachineOpenHistoryId: socketMessage.drugMachineOpenHistoryId }),
     };
-    const BACKEND_URL = process.env.IS_PROD === '1'
+    const BACKEND_URL = process.env.IS_PROD  == 'true'
       ? process.env.REACT_APP_BACKEND_URL_PROD
       : process.env.REACT_APP_BACKEND_URL
 
