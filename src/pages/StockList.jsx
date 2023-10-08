@@ -14,7 +14,7 @@ function StockList({ socketMessage }) {
     if (socketMessage.entryType == "Pickup Medicine") {
       socketMessage.stockList.forEach(function (row) {
         address.push(row.slotAddress)
-        value.push(row.qty)
+        value.push(Math.abs(row.qty))
       })
     } else {
       address = [`${cookieSession.openDoorAddress}`]
