@@ -8,6 +8,7 @@ import Success from "./pages/Success.jsx";
 import Login from "./pages/Login.jsx";
 import Failed from "./pages/Failed.jsx";
 import Cookies from 'js-cookie';
+import axios from 'axios';
 
 function App() {
   const [currentPage, setCurrentPage] = useState(<IdlePage />);

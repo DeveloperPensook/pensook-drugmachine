@@ -29,7 +29,9 @@ function StockList({ socketMessage }) {
       drugMachineCode: socketMessage.drugMachineCode,
       stockLedgerEntryId: socketMessage.stockLedgerEntryId,
       drugMachineOpenHistoryId: socketMessage.drugMachineOpenHistoryId,
-      entryStatusAddress: cookieSession.entryStatusAddress
+      entryStatusAddress: cookieSession.entryStatusAddress,
+      doorStatusAddress: cookieSession.doorStatusAddress,
+      entryType: socketMessage.entryType
     }
     axios
       .post(
@@ -38,6 +40,24 @@ function StockList({ socketMessage }) {
       )
       .then((response) => {
         console.log("POST request successful:", response.data);
+        let requestData2 = {
+          ip: cookieSession.ipAddress,
+          modbusPort: cookieSession.port,
+          slaveId: cookieSession.slaveId,
+          address: [`${entryType == ' Pickup Medicine' ? entryStatusAddress : doorStatusAddress}}`],
+          length: 0,
+          stockLedgerEntryId: socketMessage.stockLedgerEntryId,
+          drugMachineOpenHistoryId: socketMessage.drugMachineOpenHistoryId,
+          entryStatusAddress: cookieSession.entryStatusAddress,
+          doorStatusAddress: cookieSession.doorStatusAddress,
+          entryType: getStatusModbus
+        }
+        axios
+          .post(`http://localhost:6007/api/stockLedger/getStatusModbus`,
+          requestData2
+        ).then((response) => {
+          console.log("POST request successfull:", response.data);
+        })
       })
       .catch((error) => {
         console.error("Error making POST request:", error);
