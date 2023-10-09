@@ -84,7 +84,7 @@ function App() {
           : process.env.REACT_APP_BACKEND_URL
 
         axios
-          .post(`${BACKEND_URL}/api/stockLedger/updateStatusToApproved`, requestData)
+          .post(`${BACKEND_URL}/auth/updateStatusToApproved`, requestData)
           .then((response) => {
             console.log('POST request successful:', response.data);
             setCurrentPage(<Success />);
