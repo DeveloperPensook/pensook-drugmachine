@@ -21,12 +21,12 @@ function ShowPin({ socketMessage }) {
   const seconds = countdown % 60;
 
   const callService = () => {
-    const requestBody = { pin: socketMessage.pin };
+    const requestBody = { pin: socketMessage.pin, closeStatus: "Pin Failed" };
     const BACKEND_URL = process.env.REACT_APP_IS_PROD  == 'true'
       ? process.env.REACT_APP_BACKEND_URL_PROD
       : process.env.REACT_APP_BACKEND_URL
 
-    fetch(`${BACKEND_URL}/api/stockLedger/closeEntryOnPin`, {
+    fetch(`${BACKEND_URL}/auth/closeEntryOnPin`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

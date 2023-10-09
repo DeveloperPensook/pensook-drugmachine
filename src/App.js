@@ -63,6 +63,9 @@ function App() {
             case 'success':
               setCurrentPage(<Success socketMessage={socketData.message} />);
               break;
+            case 'failed':
+              setCurrentPage(<Failed socketMessage={socketData.message} />);
+              break;
             default:
               setCurrentPage(null);
               break;
