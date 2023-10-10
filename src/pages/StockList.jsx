@@ -37,19 +37,11 @@ function StockList({ socketMessage }) {
     
     axios.post(`http://localhost:6007/api/stockLedger/drugMachineModbus`, requestData).then((response) => {
       if (response.data.response.success) {
-        axios.post(`http://localhost:6007/api/stockLedger/getStatusModbus`, requestData).then((response) => {
-          axios.post(`${BACKEND_URL}/auth/closeEntryOnSuccess`, {pin: socketMessage.pin}).then((secondResponse) => {
-            console.log(secondResponse)
-          }).catch((secondError) => {
-            console.error(secondError)
-          });
-        }).catch((error) => {
-          axios.post(`${BACKEND_URL}/auth/closeEntryOnPin`, {pin: socketMessage.pin, closeStatus: "Error Closed"}).then((secondResponse) => {
-            console.log(secondResponse)
-          }).catch((secondError) => {
-            console.error(secondError)
-          });
-        })
+        axios.post(`${BACKEND_URL}/auth/closeEntryOnSuccess`, {pin: socketMessage.pin}).then((secondResponse) => {
+          console.log(secondResponse)
+        }).catch((secondError) => {
+          console.error(secondError)
+        });
       } else {
         axios.post(`${BACKEND_URL}/auth/closeEntryOnPin`, {pin: socketMessage.pin, closeStatus: "Error Closed"}).then((secondResponse) => {
           console.log(secondResponse)
