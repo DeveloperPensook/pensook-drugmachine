@@ -31,42 +31,52 @@ function StockList({ socketMessage }) {
       doorStatusAddress: cookieSession.doorStatusAddress,
       entryType: socketMessage.entryType
     }
+    const BACKEND_URL = process.env.REACT_APP_IS_PROD  == 'true'
+        ? process.env.REACT_APP_BACKEND_URL_PROD
+        : process.env.REACT_APP_BACKEND_URL
     
-    axios
-      .post(
-        `http://localhost:6007/api/stockLedger/drugMachineModbus`,
-        requestData
-      )
-      .then((response) => {
-        
-      })
-      .catch((error) => {
-        
+    axios.post(`http://localhost:6007/api/stockLedger/drugMachineModbus`, requestData).then((response) => {
+      if (response.data.response.success) {
+        axios.post(`http://localhost:6007/api/stockLedger/getStatusModbus`, requestData).then((response) => {
+          axios.post(`${BACKEND_URL}/auth/closeEntryOnSuccess`, {pin: socketMessage.pin}).then((secondResponse) => {
+            console.log(secondResponse)
+          }).catch((secondError) => {
+            console.error(secondError)
+          });
+        }).catch((error) => {
+          axios.post(`${BACKEND_URL}/auth/closeEntryOnPin`, {pin: socketMessage.pin, closeStatus: "Error Closed"}).then((secondResponse) => {
+            console.log(secondResponse)
+          }).catch((secondError) => {
+            console.error(secondError)
+          });
+        })
+      } else {
+        axios.post(`${BACKEND_URL}/auth/closeEntryOnPin`, {pin: socketMessage.pin, closeStatus: "Error Closed"}).then((secondResponse) => {
+          console.log(secondResponse)
+        }).catch((secondError) => {
+          console.error(secondError)
+        });
+      }
+    }).catch((error) => {
+      axios.post(`${BACKEND_URL}/auth/closeEntryOnPin`, {pin: socketMessage.pin, closeStatus: "Error Closed"}).then((secondResponse) => {
+        console.log(secondResponse)
+      }).catch((secondError) => {
+        console.error(secondError)
       });
+    });
   });
 
   const updateStatusToApproved = () => {
-    const requestData = {
-      ...(socketMessage.stockLedgerEntryId
-        ? { stockLedgerEntryId: socketMessage.stockLedgerEntryId }
-        : { drugMachineOpenHistoryId: socketMessage.drugMachineOpenHistoryId }),
-    };
     const BACKEND_URL =
       process.env.REACT_APP_IS_PROD == "true"
         ? process.env.REACT_APP_BACKEND_URL_PROD
         : process.env.REACT_APP_BACKEND_URL;
 
-    axios
-      .post(
-        `${BACKEND_URL}/auth/updateStatusToApproved`,
-        requestData
-      )
-      .then((response) => {
-        console.log("POST request successful:", response.data);
-      })
-      .catch((error) => {
-        console.error("Error making POST request:", error);
-      });
+    axios.post(`${BACKEND_URL}/auth/closeEntryOnPin`, { pin: socketMessage.pin, closeStatus: "Error Closed"}).then((secondResponse) => {
+      console.log(secondResponse)
+    }).catch((secondError) => {
+      console.error(secondError)
+    });
   };
 
   return (
