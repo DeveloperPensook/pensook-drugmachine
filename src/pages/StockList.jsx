@@ -6,6 +6,7 @@ import "./StockList.css";
 
 function StockList({ socketMessage }) {
   let tableData = [];
+  let notShowTable = false
   let headerMessage =
     socketMessage.entryType === "Pickup Medicine"
       ? "โปรดรอรับยา"
@@ -18,9 +19,11 @@ function StockList({ socketMessage }) {
       tableData.push({
         position: row.position,
         medicine_code: row.medicineName,
-        qty: `${row.qty} ${row.uom}`,
+        qty: `${Math.abs(row.qty)} ${row.uom}`,
       });
     }
+  } else {
+    notShowTable = true
   }
   let showBtn = process.env.REACT_APP_MODBUS_TEST === "false" ? true : false;
 
@@ -212,7 +215,8 @@ function StockList({ socketMessage }) {
             </button>
           ) : null}
         </div>
-        <div className="stocklist-section" style={{ height: "95%" }}>
+        {notShowTable ? null : (
+          <div className="stocklist-section" style={{ height: "95%" }}>
           <div className="stocklist-section" style={{ width: "33.3%" }}>
             <div className="stocklist-table-left">
               {renderTable(tableData.slice(0, 12))}
@@ -229,6 +233,7 @@ function StockList({ socketMessage }) {
             </div>
           </div>
         </div>
+        )}
       </div>
     </div>
   );
