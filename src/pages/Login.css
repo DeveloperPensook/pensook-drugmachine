@@ -1,0 +1,176 @@
+.login-page {
+  background-image: url("../asset/login-background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.login-card {
+  background-color: #ffffff;
+  text-align: center;
+  height: 100vh;
+  width: 50vw;
+}
+
+.login-card2 {
+  background-color: #ffffff;
+  text-align: center;
+  height: 65vh;
+  width: 36vw;
+  margin-right: 7%;
+  background: rgba(227, 227, 227, 0.5);
+  border: 1px solid rgba(246, 246, 246, 0.3);
+  backdrop-filter: blur(1px);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.login-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-header {
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 40px;
+  display: flex;
+  align-items: left;
+  text-align: left;
+  justify-content: left;
+  width: 80%;
+}
+
+.login-header3 {
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  text-align: left;
+  width: 80%;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 66px;
+  color: #ffffff;
+}
+
+.login-header3-black {
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 66px;
+  color: #000000;
+}
+
+.login-header4 {
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  text-align: left;
+  width: 80%;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #ffffff;
+}
+
+.login-header2 {
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  display: flex;
+  align-items: left;
+  text-align: left;
+  justify-content: left;
+  color: #808080;
+  width: 80%;
+  padding-top: 10px;
+}
+
+.login-label {
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 33px;
+  display: flex;
+  align-items: left;
+  text-align: left;
+  justify-content: left;
+  width: 80%;
+}
+
+.form-section {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  justify-content: left;
+}
+
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+label {
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 33px;
+}
+
+input {
+  height: 60px;
+  background: #ffffff;
+  border: 1px solid #c9c9c9;
+  border-radius: 30px;
+  box-sizing: border-box;
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 33px;
+  padding-left: 15px;
+}
+
+.error-text {
+  width: 100%;
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 33px;
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  height: 60px;
+  width: 100%;
+  margin-top: 80px;
+  color: #ffffff;
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 16px;
+  background: #007dfc;
+  border-radius: 30px;
+  border: 0px solid #c9c9c9;
+}
