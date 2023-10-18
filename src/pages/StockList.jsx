@@ -210,9 +210,9 @@ function StockList({ socketMessage }) {
         <div className="stocklist-section" style={{ height: "5%" }}>
           <div className="stocklist-header">{headerMessage}</div>
           {showBtn ? (
-            <button onClick={updateStatusToApproved}>
+            <div onClick={updateStatusToApproved} className="btn-update-status">
               Update Status to Approved
-            </button>
+            </div>
           ) : null}
         </div>
         {notShowTable ? null : (
