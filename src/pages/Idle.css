@@ -19,18 +19,25 @@
 
 .idle-section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .idle-text {
   font-family: "IBM Plex Sans Thai", sans-serif;
+  width: 80%;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 30px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
+}
+
+.idle-text-blue {
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  color: #007DFC;
 }

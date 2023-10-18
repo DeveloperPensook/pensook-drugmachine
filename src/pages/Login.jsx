@@ -109,8 +109,7 @@ function Login() {
         </div>
         <div className="login-section" style={{ height: "40%" }}>
           <div className="login-header4">
-          แมชชีนฮอตดอกคาปูชิโน โปรเจกเตอร์ ฟลุตดยุก ฮิบรูวิวตุ๊ด
-          <br></br>หมิง ศิลปวัฒนธรรมวอลซ์โพสต์สเตอริโอแอสเตอร์ 
+            <span className="login-header4-black">Pensook health care technology Co.,Ltd </span> เป็นบริษัท health care startup ของประเทศไทย ที่มีความมุ่งหวังอยากจะทำให้ผู้คนมีคุณภาพ ชีวิตที่ดี เข้าถึงการรักษาพยาบาลได้ง่าย และมีอายุขัยที่ยืนยาวขึ้น
           </div>
         </div>
       </div>

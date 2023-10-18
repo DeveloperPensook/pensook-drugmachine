@@ -13,8 +13,10 @@ function IdlePage({ socketMessage }) {
         <div className="idle-section" style={{ height: '50%' }}>
           <img src={IdleImage} alt="IdleImage" />
         </div>
-        <div className="idle-text" style={{ height: '25%' }}>
-          แมชชีนฮอตดอกคาปูชิโน โปรเจกเตอร์ ฟลุตดยุก ฮิบรูวิวตุ๊ด<br></br>หมิง ศิลปวัฒนธรรมวอลซ์โพสต์สเตอริโอแอสเตอร์ 
+        <div className="idle-section" style={{ height: '25%' }}>
+          <div className="idle-text">
+            PENSOOK HEALTH CARE TECHNOLOGY CO,.LTD <span className="idle-text-blue">มีความมุ่งมั่น ตั้งใจ พัฒนาเทคโนโลยีทางการแพทย์<br></br>ให้มีประสิทธิภาพมากขึ้น</span> โดยการร่วมพัฒนา โรงพยาบาลและสถานบริการทางการแพทย์ <br></br>เพื่อแบ่งเบาภาระของบุคลากรทางการแพทย์ และพัฒนาคุณภาพชีวิตของผู้คนให้ดียิ่งขึ้น
+          </div>
         </div>
       </div>
     </div>
