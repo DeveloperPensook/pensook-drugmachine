@@ -27,7 +27,7 @@
 .idle-text {
   font-family: "IBM Plex Sans Thai", sans-serif;
   width: 80%;
-  font-style: normal;
+  font-style: bold;
   font-weight: 400;
   font-size: 18px;
   line-height: 30px;
@@ -35,7 +35,7 @@
 
 .idle-text-blue {
   font-family: "IBM Plex Sans Thai", sans-serif;
-  font-style: normal;
+  font-style: bold;
   font-weight: 400;
   font-size: 18px;
   line-height: 30px;

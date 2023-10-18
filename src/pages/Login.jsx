@@ -131,6 +131,7 @@ function Login() {
                 type="text"
                 id="drugMachineCode"
                 name="drugMachineCode"
+                class="interactive-input"
                 value={drugMachineCode}
                 onChange={handleDrugMachineCodeChange}
                 required 
@@ -142,6 +143,7 @@ function Login() {
                 type="password"
                 id="password"
                 name="password"
+                class="interactive-input"
                 value={password}
                 onChange={handlePasswordChange}
                 required 

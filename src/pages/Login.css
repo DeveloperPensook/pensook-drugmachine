@@ -38,7 +38,7 @@
 
 .login-header {
   font-family: "IBM Plex Sans Thai", sans-serif;
-  font-style: normal;
+  font-style: bold;
   font-weight: 700;
   font-size: 24px;
   line-height: 40px;
@@ -46,25 +46,25 @@
   align-items: left;
   text-align: left;
   justify-content: left;
-  width: 80%;
+  width: 60%;
 }
 
 .login-header3 {
   font-family: "IBM Plex Sans Thai", sans-serif;
   text-align: left;
   width: 80%;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 48px;
+  font-style: bold;
+  font-weight: 700;
+  font-size: 50px;
   line-height: 66px;
   color: #ffffff;
 }
 
 .login-header3-black {
   font-family: "IBM Plex Sans Thai", sans-serif;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 48px;
+  font-style: bold;
+  font-weight: 700;
+  font-size: 50px;
   line-height: 66px;
   color: #000000;
 }
@@ -73,8 +73,8 @@
   font-family: "IBM Plex Sans Thai", sans-serif;
   text-align: left;
   width: 80%;
-  font-style: normal;
-  font-weight: 400;
+  font-style: bold;
+  font-weight: 500;
   font-size: 20px;
   line-height: 30px;
   color: #ffffff;
@@ -82,8 +82,8 @@
 
 .login-header4-black {
   font-family: "IBM Plex Sans Thai", sans-serif;
-  font-style: normal;
-  font-weight: 400;
+  font-style: bold;
+  font-weight: 500;
   font-size: 20px;
   line-height: 30px;
   color: #000000;
@@ -91,7 +91,7 @@
 
 .login-header2 {
   font-family: "IBM Plex Sans Thai", sans-serif;
-  font-style: normal;
+  font-style: bold;
   font-weight: 400;
   font-size: 12px;
   line-height: 20px;
@@ -100,13 +100,13 @@
   text-align: left;
   justify-content: left;
   color: #808080;
-  width: 80%;
+  width: 60%;
   padding-top: 10px;
 }
 
 .login-label {
   font-family: "IBM Plex Sans Thai", sans-serif;
-  font-style: normal;
+  font-style: bold;
   font-weight: 500;
   font-size: 20px;
   line-height: 33px;
@@ -114,11 +114,11 @@
   align-items: left;
   text-align: left;
   justify-content: left;
-  width: 80%;
+  width: 60%;
 }
 
 .form-section {
-  width: 80%;
+  width: 60%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -136,16 +136,16 @@
 
 label {
   font-family: "IBM Plex Sans Thai", sans-serif;
-  font-style: normal;
+  font-style: bold;
   font-weight: 500;
   font-size: 20px;
   line-height: 33px;
 }
 
-input {
+.interactive-input {
   height: 60px;
   background: #ffffff;
-  border: 1px solid #c9c9c9;
+  border: 1px solid #000;
   border-radius: 30px;
   box-sizing: border-box;
   font-family: "IBM Plex Sans Thai", sans-serif;
@@ -154,6 +154,12 @@ input {
   font-size: 20px;
   line-height: 33px;
   padding-left: 15px;
+  transition: border-color 0.3s;
+}
+
+.interactive-input:focus,
+.interactive-input:active {
+  border-color: #007DFC;
 }
 
 .error-text {
