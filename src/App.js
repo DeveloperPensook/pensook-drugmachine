@@ -66,6 +66,9 @@ function App() {
             case 'failed':
               setCurrentPage(<Failed socketMessage={socketData.message} />);
               break;
+            case 'cancel':
+              setCurrentPage(<IdlePage/>)
+              break;
             default:
               setCurrentPage(null);
               break;
