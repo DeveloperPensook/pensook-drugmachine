@@ -60,7 +60,7 @@ function App() {
               setCurrentPage(<ShowPin socketMessage={socketData.message} />);
               break;
             case 'stock-list':
-              if (socketData.entryType !== 'Pickup Medicine') {
+              if (socketData.message.entryType !== 'Pickup Medicine') {
                 setCurrentPage(
                   <div className="App">
                     <div className='dialog-section'></div>
@@ -78,6 +78,9 @@ function App() {
                   Object.assign(socketData.message, { drugMachineCode: cookieSession.Code })
                   setCurrentPage(<StockList socketMessage={socketData.message} />);
                 }, 2000);
+              } else {
+                Object.assign(socketData.message, { drugMachineCode: cookieSession.Code })
+                setCurrentPage(<StockList socketMessage={socketData.message} />);
               }
               break;
             case 'success':
