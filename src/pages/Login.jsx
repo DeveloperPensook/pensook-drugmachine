@@ -134,6 +134,7 @@ function Login() {
                 name="drugMachineCode"
                 value={drugMachineCode}
                 onChange={handleDrugMachineCodeChange}
+                required 
               />
             </div>
             <div className="form-group" style={{ height: "30%" }}>
@@ -144,6 +145,7 @@ function Login() {
                 name="password"
                 value={password}
                 onChange={handlePasswordChange}
+                required 
               />
             </div>
             <div className="form-group" style={{ height: "5%" }}>
