@@ -9,7 +9,7 @@ function StockList({ socketMessage }) {
   let notShowTable = false
   let headerMessage =
     socketMessage.entryType === "Pickup Medicine"
-      ? "โปรดรอรับยา"
+      ? "โปรดหยิบยาออกจากตู้"
       : socketMessage.entryType === "Add Stock"
       ? "กรุณาเติมยาเข้าสู่ตู้เก็บยา"
       : "";

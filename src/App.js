@@ -108,7 +108,7 @@ function App() {
                     <div className='dialog-section'></div>
                     <div className='dialog-card'>
                       <img src={SuccessIcon} alt="SuccessIcon" />
-                      เบิกยาสำเร็จ
+                      เติมยาสำเร็จ
                     </div>
                     <div className="page-container">
                       {currentPage}
